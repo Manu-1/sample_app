@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe User do
 
+<<<<<<< HEAD
   before do
+=======
+before do
+>>>>>>> modeling-users
     @user = User.new(name: "Example User", email: "user@example.com")
   end
 
@@ -10,15 +14,20 @@ describe User do
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+<<<<<<< HEAD
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+=======
+
+>>>>>>> modeling-users
   it { should be_valid }
 
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
 
+<<<<<<< HEAD
   describe "when email is not present" do
     before { @user.email = " " }
     it { should_not be_valid }
@@ -29,6 +38,13 @@ describe User do
   end
 end
   describe "when email format is invalid" do
+=======
+     describe "when name is too long" do
+    before { @user.name = "a" * 51 }
+    it { should_not be_valid }
+
+     describe "when email format is invalid" do
+>>>>>>> modeling-users
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
@@ -45,12 +61,17 @@ end
       addresses.each do |valid_address|
         @user.email = valid_address
         expect(@user).to be_valid
+<<<<<<< HEAD
       end
     end
   end
 end
 
    describe "when email address is already taken" do
+=======
+
+         describe "when email address is already taken" do
+>>>>>>> modeling-users
     before do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
@@ -58,10 +79,15 @@ end
     end
 
     it { should_not be_valid }
+<<<<<<< HEAD
+=======
+          end
+>>>>>>> modeling-users
         end
       end
     end
   end
+<<<<<<< HEAD
 end
 describe "when password is not present" do
     before do
@@ -96,4 +122,6 @@ describe "with a password that's too short" do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+=======
+>>>>>>> modeling-users
 end

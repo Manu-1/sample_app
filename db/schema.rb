@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140528081626) do
+=======
+ActiveRecord::Schema.define(version: 20140527034513) do
+>>>>>>> modeling-users
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.string   "password_digest"
+=======
+>>>>>>> modeling-users
   end
 
 end
