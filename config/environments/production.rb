@@ -39,10 +39,6 @@ SampleApp::Application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
-  # Force all access to the app over SSL, use Strict-Transport-Security,
-  # and use secure cookies.
-  config.force_ssl = true
-
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
@@ -55,6 +51,10 @@ SampleApp::Application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
+  config.force_ssl = true
+  
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
 
