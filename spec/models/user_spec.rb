@@ -14,8 +14,6 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
 
   it { should be_valid }
 
@@ -23,31 +21,18 @@ describe User do
     before { @user.name = " " }
     it { should_not be_valid }
   end
-end
 
- describe "when email is not present" do
+   describe "when email is not present" do
     before { @user.email = " " }
     it { should_not be_valid }
   end
-end
 
-describe "when name is too long" do
+   describe "when name is too long" do
     before { @user.name = "a" * 51 }
     it { should_not be_valid }
   end
-end
 
-describe "email address with mixed case" do
-    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
-
-    it "should be saved as all lower-case" do
-      @user.email = mixed_case_email
-      @user.save
-      expect(@user.reload.email).to eq mixed_case_email.downcase
-    end
-  end
-
-describe "when email format is invalid" do
+  describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
@@ -67,9 +52,8 @@ describe "when email format is invalid" do
       end
     end
   end
-end
 
-describe "when email address is already taken" do
+  describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
       user_with_same_email.save
@@ -77,9 +61,8 @@ describe "when email address is already taken" do
 
     it { should_not be_valid }
   end
-end
 
- describe "when email address is already taken" do
+  describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
@@ -88,9 +71,8 @@ end
 
     it { should_not be_valid }
   end
-end
 
-describe "when password is not present" do
+  describe "when password is not present" do
     before do
       @user = User.new(name: "Example User", email: "user@example.com",
                        password: " ", password_confirmation: " ")
@@ -98,13 +80,12 @@ describe "when password is not present" do
     it { should_not be_valid }
   end
 
-describe "when password doesn't match confirmation" do
+  describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
   end
-end
 
-describe "with a password that's too short" do
+  describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
