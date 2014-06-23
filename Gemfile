@@ -31,6 +31,8 @@ group :test do
   gem  'childprocess' ,  '0.3.6' 
   gem 'factory_girl_rails', '4.2.1'
   gem "rake", "0.8.7"
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 gem 'sass-rails', '4.0.1'

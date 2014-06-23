@@ -4,15 +4,14 @@ describe "Authentication" do
 
   subject { page }
 
-  describe "signin page" do
+describe "signin page" do
     before { visit signin_path }
 
     it { should have_content('Sign in') }
     it { should have_title('Sign in') }
   end
-end
 
-  describe "signin" do
+describe "signin" do
 
     before { visit signin_path }
 
@@ -27,7 +26,6 @@ end
         it { should_not have_selector('div.alert.alert-error') }
       end
     end
-  end
 
   describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
@@ -42,3 +40,5 @@ end
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
     end
+  end
+end
