@@ -41,9 +41,9 @@ describe "signin" do
   end
 end
 
-describe "authorization" do
+      describe "authorization" do
 
-    describe "for non-signed-in users" do
+      describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
 
       describe "in the Users controller" do
@@ -52,6 +52,19 @@ describe "authorization" do
           before { visit edit_user_path(user) }
           it { should have_title('Sign in') }
         end
+
+        describe "in the Microposts controller" do
+
+        describe "submitting to the create action" do
+          before { post microposts_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
 
         describe "visiting the user index" do
           before { visit users_path }
