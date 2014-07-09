@@ -22,5 +22,6 @@ RSpec::Matchers.define :have_error_message do |message|
     fill_in "Email",    with: user.email
     fill_in "Password", with: user.password
     click_button "Sign in"
+    end
   end
 end
